@@ -1,0 +1,81 @@
+1.  Decimal to binary Number conversion : GFG - Practice
+class Solution:
+    def decToBinary(self, n):
+        string = ""
+        i = n
+        while(i>1): 
+            string += str(i%2)
+            i = i // 2
+        string += "1"
+        return string[::-1]
+
+2. Binary number to decimal conversion : GFG - Practice
+class Solution:
+    def binary_to_decimal(self, B):
+        ans = 0
+        pow = 2
+        for i in range(len(B)-1,-1,-1):
+            ans += (pow ** i) * B[len(B)-i]
+        return ans
+
+3. One's Complement of binary number : GFG - Practice
+class Solution:
+    def onesComplement(self,S,N):
+        string = ""
+        for i in S:
+            if i == '1':
+                string += '0'
+            if i == '0':
+                string += '1'
+        return string
+
+4. Two's complement of binary number : GFG - Practice  - done on the logic where keep same bits until we encounter first 1 then after encountering first 1 just flip the bits
+class Solution:
+    def complement(self, bi):
+        ones = 0
+        string = ""
+        initial = bi[::-1]
+        for i in initial:
+            if i == '1' and ones == 0:
+                ones += 1
+                string += '1'
+            elif i == '1' and ones == 1:
+                string += '0'
+            elif i == '0' and ones == 1:
+                string += '1'
+            else:
+                string += i
+        return string[::-1]
+
+5. Check Kth bit : GFG practice --  (n&(1<<k)) != 0 
+class Solution:
+    def checkKthBit(self, n, k):
+        if (n & (1 << k)) != 0:
+            return True  
+        else:
+            return False 
+
+6. Check whether number is odd or even  -- GFG practice
+class Solution:
+    def isEven (self, n):
+        if n ^ (n-1) == 1:
+            return False
+        else:
+            return True
+
+7. Check if a number is power of two or not :
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n & n-1 == 0 and n > 0:
+            return True
+        else:
+            return False
+
+8. Count number of set bits :
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        count = 0
+        while(n>0):
+            n = n & (n-1)
+            count += 1
+        return count
