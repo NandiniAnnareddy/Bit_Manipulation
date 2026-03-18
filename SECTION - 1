@@ -63,7 +63,7 @@ class Solution:
         else:
             return True
 
-7. Check if a number is power of two or not :
+7. Check if a number is power of two or not : Leetcode - 231
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
         if n & n-1 == 0 and n > 0:
@@ -71,7 +71,7 @@ class Solution:
         else:
             return False
 
-8. Count number of set bits :
+8. Count number of set bits : Leetcode - 191
 class Solution:
     def hammingWeight(self, n: int) -> int:
         count = 0
@@ -79,3 +79,26 @@ class Solution:
             n = n & (n-1)
             count += 1
         return count
+
+9. Set the right most unset bit : GFG practice
+class Solution:
+	def setBit(self, n):
+	    return n | n+1
+
+10. Divide two integers - Leetcode 24
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        if dividend == -2147483648 and divisor == -1:
+            return 2147483647
+        divisor1 = abs(divisor)
+        dividend1 = abs(dividend)
+        final = 0
+        while dividend1 >= divisor1:
+            count = 0
+            while dividend1 >= (divisor1 << (count + 1)):
+                count += 1
+            final += (1 << count)
+            dividend1 -= (divisor1 << count)
+        if (dividend < 0) ^ (divisor < 0):
+            final = -final
+        return final
